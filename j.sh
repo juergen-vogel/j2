@@ -6,7 +6,7 @@ j() {
         shift
         # $HOME isn't worth matching
         [ "$*" = "$HOME" ] && return
-        awk -v q="$*" -v t="$(date +%s)" -F"|" '
+        awk -v q="$*" -v --posix t="$(date +%s)" -F"|" '
             BEGIN { l[q] = 1; d[q] = t }
             $2 >= 1 {
                 if( $1 == q ) {
